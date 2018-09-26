@@ -40,19 +40,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Customer.cs" />
-    <Compile Include="CustomerRepository.cs" />
-    <Compile Include="CustomerRepositoryImplementation.cs" />
-    <Compile Include="ICustomerRepository.cs" />
-    <Compile Include="IOrderRepository.cs" />
-    <Compile Include="IOrderValidator.cs" />
-    <Compile Include="IVatApplicator.cs" />
-    <Compile Include="Order.cs" />
-    <Compile Include="OrderRepository.cs" />
-    <Compile Include="OrderService.cs" />
-    <Compile Include="OrderValidator.cs" />
+    <Compile Include="Api\Model\Customer.cs" />
+    <Compile Include="PlacingOrders\CustomerRepository.cs" />
+    <Compile Include="PlacingOrders\CustomerRepositoryImplementation.cs" />
+    <Compile Include="Api\ICustomerRepository.cs" />
+    <Compile Include="Api\IOrderRepository.cs" />
+    <Compile Include="Api\IOrderValidator.cs" />
+    <Compile Include="Api\IVatApplicator.cs" />
+    <Compile Include="Api\Model\Order.cs" />
+    <Compile Include="PlacingOrders\OrderRepository.cs" />
+    <Compile Include="PlacingOrders\OrderService.cs" />
+    <Compile Include="PlacingOrders\OrderValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="VatApplicator.cs" />
+    <Compile Include="PlacingOrders\VatApplicator.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

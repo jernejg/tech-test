@@ -1,4 +1,5 @@
-﻿using Xunit;
+﻿using AnyCompany.PlacingOrders;
+using Xunit;
 
 namespace AnyCompany.Tests
 {

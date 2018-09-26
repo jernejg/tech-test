@@ -1,7 +1,8 @@
 using System;
 using System.Data.SqlClient;
+using AnyCompany.Api;
 
-namespace AnyCompany
+namespace AnyCompany.PlacingOrders
 {
     public class CustomerRepositoryImplementation : ICustomerRepository
     {

@@ -1,6 +1,7 @@
 ﻿using System;
+using AnyCompany.Api;
 
-namespace AnyCompany
+namespace AnyCompany.PlacingOrders
 {
     public class VatApplicator : IVatApplicator
     {

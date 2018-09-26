@@ -1,4 +1,7 @@
-﻿namespace AnyCompany
+﻿using AnyCompany.Api;
+
+
+namespace AnyCompany
 {
     public class OrderService
     {

@@ -1,4 +1,6 @@
-﻿namespace AnyCompany
+﻿using AnyCompany.PlacingOrders;
+
+namespace AnyCompany
 {
     public static class CustomerRepository
     {

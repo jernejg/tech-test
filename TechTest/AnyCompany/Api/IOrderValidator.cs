@@ -1,4 +1,4 @@
-﻿namespace AnyCompany
+﻿namespace AnyCompany.Api
 {
     public interface IOrderValidator
     {

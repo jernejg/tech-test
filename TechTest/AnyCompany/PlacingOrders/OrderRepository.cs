@@ -1,6 +1,7 @@
 ﻿using System.Data.SqlClient;
+using AnyCompany.Api;
 
-namespace AnyCompany
+namespace AnyCompany.PlacingOrders
 {
     internal class OrderRepository : IOrderRepository
     {
