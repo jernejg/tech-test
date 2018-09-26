@@ -6,7 +6,7 @@ namespace AnyCompany
     {
         public bool IsValid(Order o)
         {
-            if (Math.Abs(o.Amount) < 0.01)
+            if (o.Amount < 0.01)
                 return false;
 
             return true;
