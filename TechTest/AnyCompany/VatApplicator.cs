@@ -1,4 +1,6 @@
-﻿namespace AnyCompany
+﻿using System;
+
+namespace AnyCompany
 {
     public class VatApplicator : IVatApplicator
     {
@@ -6,7 +8,7 @@
         {
             o.VAT = 0;
 
-            if (c.Country == "UK")
+            if (string.Equals(c.Country, "UK", StringComparison.InvariantCultureIgnoreCase))
                 o.VAT = 0.2d;
         }
     }
