@@ -2,7 +2,7 @@
 
 namespace AnyCompany
 {
-    internal class OrderRepository
+    internal class OrderRepository : IOrderRepository
     {
         private static string ConnectionString = @"Data Source=(local);Database=Orders;User Id=admin;Password=password;";
 
