@@ -8,7 +8,12 @@ namespace AnyCompany.PlacingOrders
 {
     public class CustomerRepositoryImplementation : ICustomerRepository
     {
-        private static string ConnectionString = @"Data Source=(local);Database=Customers;User Id=admin;Password=password;";
+        private readonly IConnectionStringBuilderProvider _csProvider;
+
+        public CustomerRepositoryImplementation(IConnectionStringBuilderProvider csProvider)
+        {
+            _csProvider = csProvider;
+        }
 
         public Customer Load(int customerId)
         {
@@ -20,7 +25,7 @@ namespace AnyCompany.PlacingOrders
             List<Order> orders;
             Customer customer;
 
-            using (var sqlConnection = new SqlConnection(ConnectionString))
+            using (var sqlConnection = new SqlConnection(_csProvider.Get().ConnectionString))
             {
                 using (var multi = sqlConnection.QueryMultiple(selectQuery, new { customerId }))
                 {
@@ -44,7 +49,7 @@ namespace AnyCompany.PlacingOrders
             Dictionary<int, Customer> customers;
             List<Order> orders;
 
-            using (var sqlConnection = new SqlConnection(ConnectionString))
+            using (var sqlConnection = new SqlConnection(_csProvider.Get().ConnectionString))
             {
                 using (var multi = sqlConnection.QueryMultiple(selectQuery))
                 {

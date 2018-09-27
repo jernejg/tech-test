@@ -34,6 +34,7 @@
       <HintPath>..\packages\Dapper.1.50.5\lib\net451\Dapper.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -44,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Api\Model\Customer.cs" />
+    <Compile Include="ConnectionStringBuilderProvider.cs" />
     <Compile Include="PlacingOrders\CustomerRepository.cs" />
     <Compile Include="PlacingOrders\CustomerRepositoryImplementation.cs" />
     <Compile Include="Api\ICustomerRepository.cs" />
@@ -51,6 +53,7 @@
     <Compile Include="Api\IOrderValidator.cs" />
     <Compile Include="Api\IVatApplicator.cs" />
     <Compile Include="Api\Model\Order.cs" />
+    <Compile Include="Api\IConnectionStringBuilderProvider.cs" />
     <Compile Include="PlacingOrders\OrderRepository.cs" />
     <Compile Include="PlacingOrders\OrderService.cs" />
     <Compile Include="PlacingOrders\OrderValidator.cs" />
