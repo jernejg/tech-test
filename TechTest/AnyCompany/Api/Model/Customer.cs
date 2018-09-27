@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace AnyCompany
 {
@@ -10,5 +11,6 @@ namespace AnyCompany
 
         public string Name { get; set; }
         public int Id { get; set; }
+        public IEnumerable<Order> Orders { get; set; }
     }
 }
