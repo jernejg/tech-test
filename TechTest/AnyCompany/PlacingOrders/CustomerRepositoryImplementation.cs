@@ -34,6 +34,12 @@ namespace AnyCompany.PlacingOrders
                 }
             }
 
+            foreach (var order in orders)
+            {
+                order.Customer = customer;
+                order.CustomerId = customer.Id;
+            }
+
             customer.Orders = orders;
 
             return customer;
@@ -61,9 +67,20 @@ namespace AnyCompany.PlacingOrders
             var ordersGroupedByCustomer = orders.GroupBy(x => x.CustomerId);
 
             foreach (var orderGroup in ordersGroupedByCustomer)
-                customers[orderGroup.Key].Orders = orderGroup;
+            {
+                var customer = customers[orderGroup.Key];
 
-            return customers.Values;
+                foreach (var order in orderGroup)
+                {
+                    order.Customer = customer;
+                    order.CustomerId = customer.Id;
+                }
+
+                customer.Orders = orderGroup.Select(x=>x).ToList();
+            }
+                
+
+            return customers.Values.ToList();
         }
     }
 }
