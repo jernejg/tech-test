@@ -6,6 +6,7 @@ namespace AnyCompany.Console
     {
         static void Main(string[] args)
         {
+            //All the decisions behind refactoring this project are explained in commit messages.
             var connectionStringBuilderProvider = new ConfigFileConnectionStringBuilderProvider("MyConnectionString");
             var customerRepository = new CustomerRepositoryImplementation(connectionStringBuilderProvider);
             var orderValidator = new OrderValidator();
