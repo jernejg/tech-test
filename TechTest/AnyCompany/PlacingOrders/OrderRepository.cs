@@ -1,5 +1,6 @@
 ﻿using System.Data.SqlClient;
 using AnyCompany.Api;
+using Dapper;
 
 namespace AnyCompany.PlacingOrders
 {
@@ -9,19 +10,16 @@ namespace AnyCompany.PlacingOrders
 
         public void Save(Order order)
         {
-            SqlConnection connection = new SqlConnection(ConnectionString);
-            connection.Open();
-
-            SqlCommand command = new SqlCommand("INSERT INTO Orders VALUES (@OrderId, @Amount, @VAT, @CustomerId)", connection);
-
-            command.Parameters.AddWithValue("@OrderId", order.OrderId);
-            command.Parameters.AddWithValue("@Amount", order.Amount);
-            command.Parameters.AddWithValue("@VAT", order.VAT);
-            command.Parameters.AddWithValue("@CustomerId", order.Customer.Id);
-
-            command.ExecuteNonQuery();
-
-            connection.Close();
+            // This is the shortest sintax possible for storing a new Order as long as:
+            //
+            // - The order of the values is in same order as the columns in the table.
+            // - We are adding values for all the columns in the table.
+            // - Properties on the Order object have the same names as the table columns.
+            var insertQuery = "INSERT INTO Orders VALUES (@OrderId, @Amount, @VAT, @CustomerId)";
+            using (var sqlConnection = new SqlConnection())
+            {
+                var result = sqlConnection.Execute(insertQuery, order);
+            }
         }
     }
 }
