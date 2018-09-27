@@ -25,6 +25,10 @@ namespace AnyCompany
         {
             var customer = _customerRepository.Load(customerId);
 
+            // Needs to be refactored, ideally this class should not be responsible
+            // for mapping Order/Customer association.
+            order.Customer = customer;
+
             if (!_orderValidator.IsValid(order))
                 return false;
 

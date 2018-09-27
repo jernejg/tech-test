@@ -12,11 +12,12 @@ namespace AnyCompany.PlacingOrders
             SqlConnection connection = new SqlConnection(ConnectionString);
             connection.Open();
 
-            SqlCommand command = new SqlCommand("INSERT INTO Orders VALUES (@OrderId, @Amount, @VAT)", connection);
+            SqlCommand command = new SqlCommand("INSERT INTO Orders VALUES (@OrderId, @Amount, @VAT, @CustomerId)", connection);
 
             command.Parameters.AddWithValue("@OrderId", order.OrderId);
             command.Parameters.AddWithValue("@Amount", order.Amount);
             command.Parameters.AddWithValue("@VAT", order.VAT);
+            command.Parameters.AddWithValue("@CustomerId", order.Customer.Id);
 
             command.ExecuteNonQuery();
 
