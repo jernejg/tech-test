@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -13,23 +12,24 @@ namespace AnyCompany.PlacingOrders
 
         public Customer Load(int customerId)
         {
-            Customer customer = new Customer();
+            var selectQuery = @"
+                                    select * from Customers where Id = @customerId
+                                    select * from Orders where CustomerId = @customerId
+                              ";
 
-            SqlConnection connection = new SqlConnection(ConnectionString);
-            connection.Open();
+            List<Order> orders;
+            Customer customer;
 
-            SqlCommand command = new SqlCommand("SELECT * FROM Customers WHERE CustomerId = " + customerId,
-                connection);
-            var reader = command.ExecuteReader();
-
-            while (reader.Read())
+            using (var sqlConnection = new SqlConnection(ConnectionString))
             {
-                customer.Name = reader["Name"].ToString();
-                customer.DateOfBirth = DateTime.Parse(reader["DateOfBirth"].ToString());
-                customer.Country = reader["Country"].ToString();
+                using (var multi = sqlConnection.QueryMultiple(selectQuery, new { customerId }))
+                {
+                    customer = multi.ReadSingle<Customer>();
+                    orders = multi.Read<Order>().ToList();
+                }
             }
 
-            connection.Close();
+            customer.Orders = orders;
 
             return customer;
         }
@@ -44,7 +44,7 @@ namespace AnyCompany.PlacingOrders
             Dictionary<int, Customer> customers;
             List<Order> orders;
 
-            using (var sqlConnection = new SqlConnection())
+            using (var sqlConnection = new SqlConnection(ConnectionString))
             {
                 using (var multi = sqlConnection.QueryMultiple(selectQuery))
                 {
