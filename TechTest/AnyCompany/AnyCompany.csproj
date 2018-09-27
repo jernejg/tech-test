@@ -44,7 +44,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\IOrderServiceFactory.cs" />
     <Compile Include="Api\Model\Customer.cs" />
+    <Compile Include="OrderServiceFactory.cs" />
     <Compile Include="ConfigFileConnectionStringBuilderProvider.cs" />
     <Compile Include="PlacingOrders\CustomerRepository.cs" />
     <Compile Include="PlacingOrders\CustomerRepositoryImplementation.cs" />
@@ -54,6 +56,7 @@
     <Compile Include="Api\IVatApplicator.cs" />
     <Compile Include="Api\Model\Order.cs" />
     <Compile Include="Api\IConnectionStringBuilderProvider.cs" />
+    <Compile Include="Api\IOrderService.cs" />
     <Compile Include="PlacingOrders\OrderRepository.cs" />
     <Compile Include="PlacingOrders\OrderService.cs" />
     <Compile Include="PlacingOrders\OrderValidator.cs" />

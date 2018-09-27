@@ -3,7 +3,7 @@
 
 namespace AnyCompany
 {
-    public class OrderService
+    public class OrderService : IOrderService
     {
         private readonly IOrderRepository _orderRepository;
         private readonly ICustomerRepository _customerRepository;
