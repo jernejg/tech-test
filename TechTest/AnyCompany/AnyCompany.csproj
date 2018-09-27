@@ -45,7 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Api\Model\Customer.cs" />
-    <Compile Include="ConnectionStringBuilderProvider.cs" />
+    <Compile Include="ConfigFileConnectionStringBuilderProvider.cs" />
     <Compile Include="PlacingOrders\CustomerRepository.cs" />
     <Compile Include="PlacingOrders\CustomerRepositoryImplementation.cs" />
     <Compile Include="Api\ICustomerRepository.cs" />
